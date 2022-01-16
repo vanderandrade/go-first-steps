@@ -1,9 +1,9 @@
 package main
 
 import (
-	"inicio.com/src/multithread"
+	"inicio.com/src/api"
 )
 
 func main() {
-	multithread.ParallelFor()
+	api.Init()
 }
