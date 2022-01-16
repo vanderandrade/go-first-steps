@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"inicio.com/src/hello"
 )
 
 func main() {
-	fmt.Println("Hello There!")
+	print( hello.Hello() )
+	print( hello.HelloImport() )
 }
