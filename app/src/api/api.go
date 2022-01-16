@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/json"
 	"text/template"
 	"net/http"
 	"fmt"
@@ -13,7 +14,7 @@ type Task struct {
 
 func Init() {
 	http.HandleFunc("/", Healthcheck)
-	http.HandleFunc("/tasks", TaskHandler)
+	http.HandleFunc("/tasks", TaskHandler2)
 	http.ListenAndServe(":8888", nil)
 }
 
@@ -29,6 +30,16 @@ func TaskHandler(w http.ResponseWriter, r *http.Request) {
 	
 	t := template.Must(template.ParseFiles("templates/task.html"))
 	t.Execute(w, task)
+}
+
+func TaskHandler2(w http.ResponseWriter, r *http.Request) {
+	task := Task {
+		Name: "Yup",
+		Done: false,
+	}
+
+	j, _ := json.Marshal(task)
+	w.Write(j)
 }
 
 
